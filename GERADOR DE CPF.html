@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gerador de CPF</title>
+  <!-- Adicione o CSS do Bootstrap ao seu site -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+
+<!-- Navbar do Bootstrap -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Gerador de CPF</a>
+</nav>
+
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-12">
+      <!-- Botão do Bootstrap -->
+      <button class="btn btn-primary" onclick="gerarCPF()">Gerar CPF</button>
+      <br><textarea id="cpf" class="mt-2" disabled></textarea>
+      <br>
+    </div>
+    <div class="col-md-12">
+      <!-- Botão do Bootstrap -->
+      <button class="btn btn-primary" onclick="geraCNPJ()">Gerar CNPJ</button>
+      <br><textarea id="cnpj" class="mt-2" disabled></textarea>
+      <br>
+    </div>
+  </div>
+</div>
+
+<script>
+function gerarCPF() {
+  var n = 9;
+  var n1 = Math.round(Math.random()*n);
+  var n2 = Math.round(Math.random()*n);
+  var n3 = Math.round(Math.random()*n);
+  var n4 = Math.round(Math.random()*n);
+  var n5 = Math.round(Math.random()*n);
+  var n6 = Math.round(Math.random()*n);
+  var n7 = Math.round(Math.random()*n);
+  var n8 = Math.round(Math.random()*n);
+  var n9 = Math.round(Math.random()*n);
+  var d1 = n9*2+n8*3+n7*4+n6*5+n5*6+n4*7+n3*8+n2*9+n1*10;
+  d1 = 11 - (mod(d1,11));
+  if (d1>=10) d1 = 0;
+  var d2 = d1*2+n9*3+n8*4+n7*5+n6*6+n5*7+n4*8+n3*9+n2*10+n1*11;
+  d2 = 11 - (mod(d2,11));
+  if (d2>=10) d2 = 0;
+  var cpf = ''+n1+n2+n3+n4+n5+n6+n7+n8+n9+d1+d2;
+  document.getElementById("cpf").innerHTML = cpf;
+}
+
+function mod(a,b) {
+  return Math.round(a-(Math.floor(a/b)*b));
+}
+
+function geraCNPJ() {
+    var n = 9;
+    var n1 = Math.round(Math.random()*n);
+    var n2 = Math.round(Math.random()*n);
+    var n3 = Math.round(Math.random()*n);
+    var n4 = Math.round(Math.random()*n);
+    var n5 = Math.round(Math.random()*n);
+    var n6 = Math.round(Math.random()*n);
+    var n7 = Math.round(Math.random()*n);
+    var n8 = Math.round(Math.random()*n);
+    var n9 = Math.round(Math.random()*n);
+    var n10 = Math.round(Math.random()*n);
+    var n11 = Math.round(Math.random()*n);
+    var n12 = Math.round(Math.random()*n);
+    var d1 = n12*2+n11*3+n10*4+n9*5+n8*6+n7*7+n6*8+n5*9+n4*2+n3*3+n2*4+n1*5;
+    d1 = 11 - ( mod(d1,11) );
+    if (d1>=10) d1 = 0;
+    var d2 = d1*2+n12*3+n11*4+n10*5+n9*6+n8*7+n7*8+n6*9+n5*2+n4*3+n3*4+n2*5+n1*6;
+    d2 = 11 - ( mod(d2,11) );
+    if (d2>=10) d2 = 0;
+    var cnpj = ''+n1+n2+'.'+n3+n4+n5+'.'+n6+n7+n8+'/'+n9+n10+n11+n12+'-'+d1+d2;
+    document.getElementById("cnpj").innerHTML = cnpj;
+
+}
+
+function mod(dividendo,divisor) {
+    return Math.round(dividendo - (Math.floor(dividendo/divisor)*divisor));
+}
+
+
+</script>
+
+<!-- Adicione o JavaScript do Bootstrap ao seu site -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>
